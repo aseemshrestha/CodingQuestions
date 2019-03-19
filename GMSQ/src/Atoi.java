@@ -16,6 +16,7 @@ public class Atoi {
         }
 
         if (input.charAt(0) == '-') {
+            startIndex++;
             isNegative = true;
         }
 
@@ -43,5 +44,6 @@ public class Atoi {
         System.out.println(atoi.atoi("1 23 "));
         System.out.println(atoi.atoi("1234"));
         System.out.println(atoi.atoi("+123"));
+        System.out.println(atoi.atoi("-123"));
     }
 }

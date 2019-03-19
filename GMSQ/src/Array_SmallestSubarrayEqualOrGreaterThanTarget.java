@@ -10,35 +10,38 @@ public class Array_SmallestSubarrayEqualOrGreaterThanTarget {
             while (sum < target && end < n) {
                 sum = sum + arr[end++];
             }
-            if (sum >= target & start < n) {
+            if (sum == target & start < n) {
+                for (int i = start; i < end; i++) {
+                    System.out.print(arr[i] + " ");
+                }
                 minLength = end - start;
 
             }
             sum = sum - arr[start++];
         }
-        System.out.println("beyween " + start +" "+minLength);
+
         System.out.println(minLength);
     }
 
     public void printSmallestSubArrayEqualtoTarget(int[] arr, int target) {
-
-        int sum = 0;
-        int left = 0;
-        int right = 0;
+        int start = -1;
+        int end = -1;
+        int min = Integer.MAX_VALUE;
 
         for (int i = 0; i < arr.length; i++) {
-            sum = sum + arr[i];
-            if (sum == target) {
-                for (int j = left; j <= i; j++) {
-                    System.out.print(arr[j] + " ");
+            int sum = 0;
+            for (int j = i; j < arr.length && (j - i + 1) < min; j++) {
+                //   System.out.println(j - i + 1 );
+                sum = sum + arr[j];
+                if (sum == target) {
+                    start = i;
+                    end = j;
+                    min = end - start + 1;
                 }
             }
-            if (sum > target) {
-                sum = sum - arr[left];
-                left++;
-            }
-
-
+        }
+        for (int i = start; i <= end; i++) {
+            System.out.println(arr[i]);
         }
     }
 
@@ -46,5 +49,7 @@ public class Array_SmallestSubarrayEqualOrGreaterThanTarget {
         Array_SmallestSubarrayEqualOrGreaterThanTarget s = new Array_SmallestSubarrayEqualOrGreaterThanTarget();
         int[] arr = new int[]{25, 12, 14, 22, 19, 15, 10, 23};
         s.printSmallestSubArray(arr, 55);
+        s.printSmallestSubArrayEqualtoTarget(arr, 55);
+
     }
 }

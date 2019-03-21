@@ -7,7 +7,7 @@ public class LowestSumForFivePrimes
 {
     public static Map<Integer, Boolean> primeMap = new HashMap<>();
     public static Map<Integer, List<Integer>> commonsMap = new HashMap<>();
-    static final Integer MAX = 100;
+    static final Integer MAX = 10000;
 
     public static long computeRemarkablePrimes(int n)
     {
@@ -107,6 +107,6 @@ public class LowestSumForFivePrimes
     public static void main(String[] args)
     {
         long sum = computeRemarkablePrimes(5);
-        System.out.println(sum);
+        System.out.println(sum);  // if sum -1, we might have to increase the MAX
     }
 }
